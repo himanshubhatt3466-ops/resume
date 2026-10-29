@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Maker Pro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">R</div>
+    <div class="brand"><strong>Resume Maker <span>Pro</span></strong><small>FREE • OFFLINE • PRIVATE</small></div>
+    <div class="top-actions">
+      <select id="languageSelect" aria-label="Language"><option value="en">English</option><option value="hi">हिन्दी</option></select>
+      <button id="newResumeBtn" class="btn btn-light">＋ New Resume</button>
+      <button id="saveBtn" class="btn btn-primary">Save Resume</button>
+    </div>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <button class="nav-item active" data-tab="editor">✎ <span data-i18n="editor">Resume Editor</span></button>
+      <button class="nav-item" data-tab="templates">▦ <span data-i18n="templates">Templates</span></button>
+      <button class="nav-item" data-tab="saved">▤ <span data-i18n="saved">My Resumes</span></button>
+      <div class="side-note"><span class="green-dot"></span><span data-i18n="offline">Works offline. Your data stays on this PC.</span></div>
+      <div class="sidebar-bottom">RESUME MAKER PRO<br><span>Version 1.0.0</span></div>
+    </aside>
+    <section class="workspace">
+      <div class="page-heading">
+        <div><p class="eyebrow" data-i18n="workspace">WORKSPACE</p><h1 id="pageTitle">Build your resume</h1><p class="muted" id="pageSubtitle">Fill in your details and watch your resume update live.</p></div>
+        <div class="heading-actions"><button id="exportBtn" class="btn btn-primary">⇩ Export PDF</button></div>
+      </div>
+      <div id="editorView" class="editor-grid">
+        <section class="panel form-panel">
+          <div class="panel-head"><div><h2 data-i18n="details">Your details</h2><p data-i18n="detailsSub">You can leave any optional field blank.</p></div><span class="step-pill">01 / 03</span></div>
+          <form id="resumeForm">
+            <label class="field"><span data-i18n="resumeName">Resume name (for your saved list)</span><input id="resumeName" placeholder="My Professional Resume"></label>
+            <div class="section-label">01 <span data-i18n="personal">PERSONAL INFORMATION</span></div>
+            <div class="form-row">
+              <label class="field"><span data-i18n="fullName">Full name</span><input id="fullName" placeholder="e.g. Rahul Sharma"></label>
+              <label class="field"><span data-i18n="jobTitle">Job title</span><input id="jobTitle" placeholder="e.g. Front-End Developer"></label>
+            </div>
+            <div class="form-row">
+              <label class="field"><span>Email</span><input id="email" type="email" placeholder="you@example.com"></label>
+              <label class="field"><span data-i18n="phone">Phone</span><input id="phone" placeholder="+91 98765 43210"></label>
+            </div>
+            <div class="form-row">
+              <label class="field"><span data-i18n="city">City / Address</span><input id="city" placeholder="City, State"></label>
+              <label class="field"><span>LinkedIn / Portfolio</span><input id="website" placeholder="linkedin.com/in/you"></label>
+            </div>
+            <label class="field"><span data-i18n="photo">Profile photo (optional)</span><input id="photo" type="file" accept="image/*"></label>
+            <div class="section-label">02 <span data-i18n="profile">PROFILE</span></div>
+            <label class="field"><span data-i18n="summary">Career objective / summary</span><textarea id="summary" rows="3" placeholder="Write 2–3 lines about yourself..."></textarea></label>
+            <div class="section-label">03 <span data-i18n="experience">EXPERIENCE</span></div>
+            <label class="field"><span data-i18n="experienceLabel">Experience (one item per line)</span><textarea id="experience" rows="3" placeholder="Role — Company — Dates — What you did"></textarea></label>
+            <div class="section-label">04 <span data-i18n="education">EDUCATION</span></div>
+            <label class="field"><span data-i18n="educationLabel">Education (one item per line)</span><textarea id="education" rows="3" placeholder="12th, School Name — Board — Year — Percentage"></textarea></label>
+            <div class="section-label">05 <span data-i18n="skills">SKILLS</span></div>
+            <label class="field"><span data-i18n="skillsLabel">Skills (comma-separated)</span><input id="skills" placeholder="HTML, CSS, JavaScript, Communication"></label>
+            <div class="section-label">06 <span data-i18n="projects">PROJECTS</span></div>
+            <label class="field"><span data-i18n="projectsLabel">Projects (one item per line)</span><textarea id="projects" rows="3" placeholder="School website — Built using HTML and CSS"></textarea></label>
+            <div class="section-label">07 <span data-i18n="extras">LANGUAGES & CERTIFICATES</span></div>
+            <label class="field"><span data-i18n="languagesLabel">Languages / certificates / achievements</span><textarea id="extras" rows="2" placeholder="Hindi, English; HTML course certificate"></textarea></label>
+          </form>
+        </section>
+        <section class="preview-column">
+          <div class="preview-toolbar"><div><strong data-i18n="livePreview">Live preview</strong><span class="live-dot"></span><p data-i18n="previewSub">Changes appear instantly</p></div><button id="chooseTemplateBtn" class="btn btn-light">▦ Choose template</button></div>
+          <div id="resumePreview" class="resume-paper template-1"></div>
+          <div class="preview-footer"><span>✓ <span data-i18n="private">Private on this device</span></span><span>A4 DOCUMENT</span></div>
+        </section>
+      </div>
+      <section id="templatesView" class="panel hidden">
+        <div class="panel-head"><div><h2>100+ Resume Templates</h2><p class="muted">Choose a design. Your content stays the same.</p></div><input id="templateSearch" class="search-box" placeholder="Search templates..."></div>
+        <div class="template-filters" id="templateFilters">
+          <button class="filter active" data-filter="All">All</button><button class="filter" data-filter="Professional">Professional</button><button class="filter" data-filter="Modern">Modern</button><button class="filter" data-filter="Fresher">Fresher</button><button class="filter" data-filter="Creative">Creative</button><button class="filter" data-filter="Simple">Simple</button><button class="filter" data-filter="Corporate">Corporate</button>
+        </div>
+        <div id="templateGrid" class="template-grid"></div>
+      </section>
+      <section id="savedView" class="panel hidden">
+        <div class="panel-head"><div><h2 data-i18n="savedTitle">My saved resumes</h2><p data-i18n="savedSub">Resume files are saved on this computer only.</p></div><button class="btn btn-primary" id="newFromSaved">＋ New Resume</button></div>
+        <div id="savedList" class="saved-list"></div>
+      </section>
+      <div id="toast" class="toast" role="status"></div>
+    </section>
+  </main>
+  <script src="renderer.js"></script>
+</body>
+</html>

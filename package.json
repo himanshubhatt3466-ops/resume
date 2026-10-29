@@ -1,0 +1,29 @@
+{
+  "name": "resume-maker-pro",
+  "version": "1.0.0",
+  "description": "Free offline bilingual resume maker for Windows",
+  "main": "main.js",
+  "author": "Resume Maker Pro",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^34.3.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "in.resumemakerpro.desktop",
+    "productName": "Resume Maker Pro",
+    "directories": { "output": "release" },
+    "files": ["main.js", "preload.js", "index.html", "styles.css", "renderer.js"],
+    "win": { "target": ["nsis"], "artifactName": "ResumeMakerPro-Setup-${version}.${ext}" },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
